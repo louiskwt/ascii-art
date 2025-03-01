@@ -1,8 +1,27 @@
 from PIL import Image
 
 image = Image.open("test.jpg")
-size = image.size
+width, height = image.width, image.height
 
 print("Successfully loaded image!")
-print(f"Image size: {size[0]} x {size[1]}")
+print(f"Image size: {width} x {height}")
+
+pixel_matrix = []
+
+# ... 
+# ...
+# ...
+
+for row in range(height):
+    matrix = []
+    for col in range(width):
+        matrix.append(image.getdata()[row * width + col])
+    pixel_matrix.append(matrix)
+
+print("Iterating through pixel contents:")
+
+for row in pixel_matrix:
+    for pixel in row:
+        print(pixel)
+          
 
