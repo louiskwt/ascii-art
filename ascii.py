@@ -11,17 +11,24 @@ pixel_matrix = []
 # ... 
 # ...
 # ...
-
+print("Successfully constructed pixel matrix!")
 for row in range(height):
     matrix = []
     for col in range(width):
         matrix.append(image.getdata()[row * width + col])
     pixel_matrix.append(matrix)
 
-print("Iterating through pixel contents:")
+# print("Iterating through pixel contents:")
 
-for row in pixel_matrix:
-    for pixel in row:
-        print(pixel)
-          
+print("Successfully constructed brightness matrix!")
+brightness_matrix = pixel_matrix
+
+for row in range(len(pixel_matrix)):
+    for col in range(len(pixel_matrix[row])):
+        brightness_matrix[row][col] = (pixel_matrix[row][col][0] + pixel_matrix[row][col][1] + pixel_matrix[row][col][2]) / 3 
+
+for row in brightness_matrix:
+    for col in row:
+        print(col)
+
 
