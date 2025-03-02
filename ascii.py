@@ -21,9 +21,6 @@ resized_width, resized_height = resized_image.width, resized_image.height
 
 pixel_matrix = []
 
-# ... 
-# ...
-# ...
 print("Successfully constructed pixel matrix!")
 for row in range(resized_height):
     matrix = []
@@ -35,10 +32,6 @@ for row in range(resized_height):
 
 brightness_matrix = [[math.floor((pixel[0] + pixel[1] + pixel[2]) / 3) for pixel in row] for row in pixel_matrix]
 print("Successfully constructed brightness matrix!")
-
-# for row in brightness_matrix:
-#     for col in row:
-#         print(col)
 
 ASCII_CHARACTER = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$" # 65 Chars
 """
