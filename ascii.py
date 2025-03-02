@@ -28,9 +28,9 @@ for row in range(len(pixel_matrix)):
     for col in range(len(pixel_matrix[row])):
         brightness_matrix[row][col] = math.floor((pixel_matrix[row][col][0] + pixel_matrix[row][col][1] + pixel_matrix[row][col][2]) / 3) 
 
-for row in brightness_matrix:
-    for col in row:
-        print(col)
+# for row in brightness_matrix:
+#     for col in row:
+#         print(col)
 
 ASCII_CHARACTER = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$" # 65 Chars
 """
@@ -47,4 +47,5 @@ for row in range(len(brightness_matrix)):
 
 for row in ascii_matrix:
     for col in row:
-        print(col)
+        print(col, end="")
+    print("\n", end="")
