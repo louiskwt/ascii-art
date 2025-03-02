@@ -43,9 +43,9 @@ ascii_matrix = brightness_matrix
 for row in range(len(brightness_matrix)):
     for col in range(len(brightness_matrix[row])):
         char_index = math.floor(brightness_matrix[row][col] / 3.9) - 1
-        ascii_matrix[row][col] = ASCII_CHARACTER[char_index]
+        ascii_matrix[row][col] = ASCII_CHARACTER[char_index] * 3
 
 for row in ascii_matrix:
     for col in row:
         print(col, end="")
-    print("\n", end="")
+ 
