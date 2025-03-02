@@ -7,16 +7,27 @@ width, height = image.width, image.height
 print("Successfully loaded image!")
 print(f"Image size: {width} x {height}")
 
+MAX_HEIGHT = 200
+MAX_WIDTH = 100
+ratio = min(MAX_WIDTH/width, MAX_HEIGHT/height)
+
+transformed_width, transformed_height = math.floor(width * ratio), math.floor(height * ratio)
+resized_image = image.resize((transformed_width, transformed_height), Image.Resampling.LANCZOS)
+
+print(f"Resized image size: {resized_image.width} x {resized_image.height}")
+
+resized_width, resized_height = resized_image.width, resized_image.height
+
 pixel_matrix = []
 
 # ... 
 # ...
 # ...
 print("Successfully constructed pixel matrix!")
-for row in range(height):
+for row in range(resized_height):
     matrix = []
-    for col in range(width):
-        matrix.append(image.getdata()[row * width + col])
+    for col in range(resized_width):
+        matrix.append(resized_image.getdata()[row * resized_width + col])
     pixel_matrix.append(matrix)
 
 # print("Iterating through pixel contents:")
