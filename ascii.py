@@ -1,7 +1,7 @@
 from PIL import Image
 import math
 
-image = Image.open("test.jpg")
+image = Image.open("test2.png")
 image = image.convert("RGB")
 width, height = image.width, image.height
 
@@ -50,8 +50,8 @@ ASCII_CHARACTER = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW
 ascii_matrix = brightness_matrix
 for row in range(len(brightness_matrix)):
     for col in range(len(brightness_matrix[row])):
-        char_index = math.floor(brightness_matrix[row][col] / 3.9) - 1
-        ascii_matrix[row][col] = ASCII_CHARACTER[char_index] * 3 # stretch out the ascii art so that it's not squashed
+        char_index = min(max(math.floor(brightness_matrix[row][col] / 3.9), 0), len(ASCII_CHARACTER) - 1)
+        ascii_matrix[row][col] = ASCII_CHARACTER[char_index] * 2 # stretch out the ascii art so that it's not squashed
 
 for row in ascii_matrix:
     print("".join(row))
