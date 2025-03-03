@@ -8,8 +8,8 @@ width, height = image.width, image.height
 print("Successfully loaded image!")
 print(f"Image size: {width} x {height}")
 
-MAX_HEIGHT = 60
-MAX_WIDTH = 50
+MAX_HEIGHT = 80
+MAX_WIDTH = 60
 ratio = min(MAX_WIDTH/width, MAX_HEIGHT/height)
 
 transformed_width, transformed_height = math.floor(width * ratio), math.floor(height * ratio)
@@ -62,3 +62,9 @@ for row in range(len(brightness_matrix)):
 
 for row in ascii_matrix:
     print("".join(row))
+
+with open("out.txt", "w") as f:
+    for row in ascii_matrix:
+        f.write("".join(row))
+        f.write("\n") 
+    f.close()
