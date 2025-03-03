@@ -8,12 +8,12 @@ width, height = image.width, image.height
 print("Successfully loaded image!")
 print(f"Image size: {width} x {height}")
 
-MAX_HEIGHT = 50
-MAX_WIDTH = 50
+MAX_HEIGHT = 60
+MAX_WIDTH = 80
 ratio = min(MAX_WIDTH/width, MAX_HEIGHT/height)
 
 transformed_width, transformed_height = math.floor(width * ratio), math.floor(height * ratio)
-resized_image = image.resize((transformed_width, transformed_height))
+resized_image = image.resize((transformed_width, math.floor(transformed_height * 1.65)))
 
 print(f"Resized image size: {resized_image.width} x {resized_image.height}")
 
@@ -44,7 +44,7 @@ ascii_matrix = brightness_matrix
 for row in range(len(brightness_matrix)):
     for col in range(len(brightness_matrix[row])):
         char_index = min(max(math.floor(brightness_matrix[row][col] / 3.9), 0), len(ASCII_CHARACTER) - 1)
-        ascii_matrix[row][col] = ASCII_CHARACTER[char_index] * 2 # stretch out the ascii art so that it's not squashed
+        ascii_matrix[row][col] = ASCII_CHARACTER[char_index] * 3 # stretch out the ascii art so that it's not squashed
 
 for row in ascii_matrix:
     print("".join(row))
