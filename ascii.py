@@ -37,7 +37,13 @@ def weighted_brigtness_mapping(R: int, G: int, B: int) -> int:
 def avg_brightness_mapping(R: int, G: int, B: int) -> int:
     return (R + B + G) // 3
 
-brightness_matrix = [[avg_brightness_mapping(pixel[0], pixel[1], pixel[2]) for pixel in row] for row in pixel_matrix]
+def luminosity_brigtness_mapping(R: int, G: int, B: int) -> int:
+    """
+        an alternative to the weighted brigntess mapping that accounts for wider spectrum
+    """
+    return (0.2126 * R + 0.7152 * G + 0.0722 * B) // 3
+
+brightness_matrix = [[luminosity_brigtness_mapping(pixel[0], pixel[1], pixel[2]) for pixel in row] for row in pixel_matrix]
 print("Successfully constructed brightness matrix!")
 
 ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 65 Chars
