@@ -33,7 +33,8 @@ for row in range(resized_height):
 brightness_matrix = [[math.floor((pixel[0] + pixel[1] + pixel[2]) / 3) for pixel in row] for row in pixel_matrix]
 print("Successfully constructed brightness matrix!")
 
-ASCII_CHARACTER = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$" # 65 Chars
+ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 65 Chars
+
 """
 255 rgb value : 65 characters
 
@@ -43,8 +44,8 @@ ASCII_CHARACTER = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW
 ascii_matrix = brightness_matrix
 for row in range(len(brightness_matrix)):
     for col in range(len(brightness_matrix[row])):
-        char_index = min(max(math.floor(brightness_matrix[row][col] / 3.9), 0), len(ASCII_CHARACTER) - 1)
-        ascii_matrix[row][col] = ASCII_CHARACTER[char_index] * 3 # stretch out the ascii art so that it's not squashed
+        char_index = min(max(math.floor(brightness_matrix[row][col] / 3.9), 0), len(ASCII_CHAR_SET) - 1)
+        ascii_matrix[row][col] = ASCII_CHAR_SET[char_index] * 3 # stretch out the ascii art so that it's not squashed
 
 for row in ascii_matrix:
     print("".join(row))
