@@ -9,7 +9,7 @@ print("Successfully loaded image!")
 print(f"Image size: {width} x {height}")
 
 MAX_HEIGHT = 60
-MAX_WIDTH = 80
+MAX_WIDTH = 50
 ratio = min(MAX_WIDTH/width, MAX_HEIGHT/height)
 
 transformed_width, transformed_height = math.floor(width * ratio), math.floor(height * ratio)
@@ -30,7 +30,16 @@ for row in range(resized_height):
 
 # print("Iterating through pixel contents:")
 
-brightness_matrix = [[math.floor((pixel[0] + pixel[1] + pixel[2]) / 3) for pixel in row] for row in pixel_matrix]
+def weighted_brigtness_mapping(R: int, G: int, B: int) -> int:
+    weigthed_r = 0.233 * R
+    weigthed_g = 0.587 * G
+    weighted_b = 0.114 * B
+    return(weigthed_r + weigthed_g + weighted_b) // 3
+
+def avg_brightness_mapping(R: int, G: int, B: int) -> int:
+    return (R + B + G) // 3
+
+brightness_matrix = [[avg_brightness_mapping(pixel[0], pixel[1], pixel[2]) for pixel in row] for row in pixel_matrix]
 print("Successfully constructed brightness matrix!")
 
 ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 65 Chars
