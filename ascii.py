@@ -28,8 +28,6 @@ for row in range(resized_height):
         matrix.append(resized_image.getpixel((col, row)))
     pixel_matrix.append(matrix)
 
-# print("Iterating through pixel contents:")
-
 def weighted_brigtness_mapping(R: int, G: int, B: int) -> int:
     weigthed_r = 0.233 * R
     weigthed_g = 0.587 * G
