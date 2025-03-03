@@ -19,14 +19,9 @@ print(f"Resized image size: {resized_image.width} x {resized_image.height}")
 
 resized_width, resized_height = resized_image.width, resized_image.height
 
-pixel_matrix = []
+pixel_matrix = [[resized_image.getpixel((col, row)) for col in range(resized_width)] for row in range(resized_height)]
 
 print("Successfully constructed pixel matrix!")
-for row in range(resized_height):
-    matrix = []
-    for col in range(resized_width):
-        matrix.append(resized_image.getpixel((col, row)))
-    pixel_matrix.append(matrix)
 
 def weighted_brigtness_mapping(R: int, G: int, B: int) -> int:
     weigthed_r = 0.233 * R
