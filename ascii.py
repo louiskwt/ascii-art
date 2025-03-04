@@ -48,7 +48,14 @@ pixel_matrix = [[resized_image.getpixel((col, row)) for col in range(resized_wid
 
 print("Successfully constructed pixel matrix!")
 
-brightness_matrix = [[luminosity_brigtness_mapping(pixel[0], pixel[1], pixel[2]) for pixel in row] for row in pixel_matrix]
+brightness_mapping_func = luminosity_brigtness_mapping
+
+if function_name == "avg":
+    brightness_mapping_func = avg_brightness_mapping
+elif function_name == "weighted":
+    brightness_mapping_func = weighted_brigtness_mapping
+
+brightness_matrix = [[brightness_mapping_func(pixel[0], pixel[1], pixel[2]) for pixel in row] for row in pixel_matrix]
 print("Successfully constructed brightness matrix!")
 
 """
