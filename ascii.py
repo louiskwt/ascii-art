@@ -1,5 +1,5 @@
 from PIL import Image
-import math
+import argparse, math 
 
 ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 91 Chars
 MAX_HEIGHT = 80
@@ -20,9 +20,15 @@ def luminosity_brigtness_mapping(R: int, G: int, B: int) -> int:
     """
     return (0.2126 * R + 0.7152 * G + 0.0722 * B) // 3
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-o', '--output', type=str, nargs="?", default=None)
+args = parser.parse_args()
+
 image = Image.open("test2.png")
 image = image.convert("RGB")
 width, height = image.width, image.height
+output = args.output
 
 print("Successfully loaded image!")
 print(f"Image size: {width} x {height}")
