@@ -65,8 +65,10 @@ for row in range(len(brightness_matrix)):
 for row in ascii_matrix:
     print("".join(row))
 
-with open("out.txt", "w") as f:
-    for row in ascii_matrix:
-        f.write("".join(row))
-        f.write("\n") 
-    f.close()
+if output:
+    print(output)
+    with open(f"{output}.txt", "w") as f:
+        for row in ascii_matrix:
+            f.write("".join(row))
+            f.write("\n") 
+        f.close()
