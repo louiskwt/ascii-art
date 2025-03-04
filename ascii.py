@@ -23,12 +23,14 @@ def luminosity_brigtness_mapping(R: int, G: int, B: int) -> int:
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-o', '--output', type=str, nargs="?", default=None)
+parser.add_argument("-f", "--function", type=str, nargs="?", default=None)
 args = parser.parse_args()
 
 image = Image.open("test2.png")
 image = image.convert("RGB")
 width, height = image.width, image.height
 output = args.output
+function_name = args.function
 
 print("Successfully loaded image!")
 print(f"Image size: {width} x {height}")
