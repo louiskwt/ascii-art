@@ -27,7 +27,12 @@ parser.add_argument("-f", "--function", type=str, nargs="?", default=None)
 parser.add_argument("-p", "--path", type=str, nargs="?", default=None)
 args = parser.parse_args()
 
-image = Image.open("test2.png")
+file_path = args.path
+
+if not file_path:
+    file_path = input("Enter a file name: ")
+
+image = Image.open(file_path)
 image = image.convert("RGB")
 width, height = image.width, image.height
 output = args.output
