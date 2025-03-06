@@ -2,8 +2,8 @@ from PIL import Image
 import argparse, math, os
 
 ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 91 Chars
-MAX_HEIGHT = 80
-MAX_WIDTH = 60
+MAX_HEIGHT = 40
+MAX_WIDTH = 40
 
 def weighted_brigtness_mapping(R: int, G: int, B: int) -> int:
     weigthed_r = 0.233 * R
@@ -85,7 +85,6 @@ for row in ascii_matrix:
     print("".join(row))
 
 if output:
-    print(output)
     with open(f"{output}.txt", "w") as f:
         for row in ascii_matrix:
             f.write("".join(row))
