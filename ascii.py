@@ -1,5 +1,5 @@
 from PIL import Image
-import argparse, math 
+import argparse, math, os
 
 ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 91 Chars
 MAX_HEIGHT = 80
@@ -28,9 +28,13 @@ parser.add_argument("-p", "--path", type=str, nargs="?", default=None)
 args = parser.parse_args()
 
 file_path = args.path
+file_exist = os.path.exists(file_path)
 
-if not file_path:
-    file_path = input("Enter a file name: ")
+if not file_exist:
+    print("Enter a valid file path")
+
+if not file_exist or not file_path:
+    file_path = input("Enter a valid file name: ")
 
 image = Image.open(file_path)
 image = image.convert("RGB")
