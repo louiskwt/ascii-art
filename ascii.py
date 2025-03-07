@@ -2,14 +2,14 @@ from PIL import Image
 import argparse, math, os
 
 ASCII_CHAR_SET = "`.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@" # 91 Chars
-MAX_HEIGHT = 40
-MAX_WIDTH = 40
+MAX_HEIGHT = 60
+MAX_WIDTH = 50
 
 def weighted_brigtness_mapping(R: int, G: int, B: int) -> int:
     weigthed_r = 0.233 * R
     weigthed_g = 0.587 * G
     weighted_b = 0.114 * B
-    return(weigthed_r + weigthed_g + weighted_b) // 3
+    return (weigthed_r + weigthed_g + weighted_b) // 3
 
 def avg_brightness_mapping(R: int, G: int, B: int) -> int:
     return (R + B + G) // 3
